@@ -1,0 +1,10 @@
+ai/shortlyst/vendingmachine/enums/CoinsTypeEnum.class
+ai/shortlyst/vendingmachine/model/Items.class
+ai/shortlyst/vendingmachine/Main.class
+ai/shortlyst/vendingmachine/model/Coins.class
+ai/shortlyst/vendingmachine/service/OperationService.class
+ai/shortlyst/vendingmachine/Main$1.class
+ai/shortlyst/vendingmachine/model/VendingState.class
+ai/shortlyst/vendingmachine/enums/ItemsNameEnum.class
+ai/shortlyst/vendingmachine/enums/CommandEnum.class
+ai/shortlyst/vendingmachine/exception/BusinessException.class
