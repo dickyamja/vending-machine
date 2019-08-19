@@ -31,12 +31,7 @@ public class Main {
 
         //prepare console
         BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            readConsoleAndReadCommand(consoleReader, service, vendingState);
-        } catch (BusinessException businessException) {
-            System.out.println(businessException.getMessage());
-            readConsoleAndReadCommand(consoleReader, service, vendingState);
-        }
+        readConsoleAndReadCommand(consoleReader, service, vendingState);
     }
 
     private static void readConsoleAndReadCommand(BufferedReader consoleReader,
@@ -52,55 +47,60 @@ public class Main {
 
     private static void routeCommand(String inputLine, OperationService service,
             VendingState vendingState) {
-        String[] commands = inputLine.split("\\s+");
-        if (commands.length == 0) {
-            System.out.println("Please input correct command !");
-        } else {
+        try {
+            String[] commands = inputLine.split("\\s+");
+            if (commands.length == 0) {
+                System.out.println("Please input correct command !");
+            } else {
 
-            //validate first argument
-            String firstArgValidation = validateFirstArgs(commands);
-            if (StringUtils.isNotBlank(firstArgValidation)) {
-                System.out.println(firstArgValidation);
-                return;
-            }
+                //validate first argument
+                String firstArgValidation = validateFirstArgs(commands);
+                if (StringUtils.isNotBlank(firstArgValidation)) {
+                    System.out.println(firstArgValidation);
+                    return;
+                }
 
-            Integer firstArg = Integer.valueOf(commands[0]);
-            CommandEnum selectedCommand = convertArgToCommand(firstArg);
-            switch (selectedCommand) {
-                case INSERT_COIN:
-                    String stepOneSecondArgValidation = validateSecondArgs(commands);
-                    if (StringUtils.isNotBlank(stepOneSecondArgValidation)) {
-                        System.out.println(stepOneSecondArgValidation);
+                Integer firstArg = Integer.valueOf(commands[0]);
+                CommandEnum selectedCommand = convertArgToCommand(firstArg);
+                switch (selectedCommand) {
+                    case INSERT_COIN:
+                        String stepOneSecondArgValidation = validateSecondArgs(commands);
+                        if (StringUtils.isNotBlank(stepOneSecondArgValidation)) {
+                            System.out.println(stepOneSecondArgValidation);
+                            break;
+                        }
+                        vendingState = service.insertCoins(vendingState, Integer.valueOf(commands[1]));
+                        vendingState.printCurrentState();
                         break;
-                    }
-                    vendingState = service.insertCoins(vendingState, Integer.valueOf(commands[1]));
-                    vendingState.printCurrentState();
-                    break;
-                case CHOOSE_ITEM_TO_PURCHASE:
-                    String stepTwosecondArgValidation = validateSecondArgs(commands);
-                    if (StringUtils.isNotBlank(stepTwosecondArgValidation)) {
-                        System.out.println(stepTwosecondArgValidation);
+                    case CHOOSE_ITEM_TO_PURCHASE:
+                        String stepTwosecondArgValidation = validateSecondArgs(commands);
+                        if (StringUtils.isNotBlank(stepTwosecondArgValidation)) {
+                            System.out.println(stepTwosecondArgValidation);
+                            break;
+                        }
+                        vendingState = service.chooseItemToPurchase(vendingState, Integer.valueOf(commands[1]));
+                        vendingState.printCurrentState();
                         break;
-                    }
-                    vendingState = service.chooseItemToPurchase(vendingState, Integer.valueOf(commands[1]));
-                    vendingState.printCurrentState();
-                    break;
-                case GET_ITEMS:
-                    vendingState = service.getItem(vendingState);
-                    vendingState.printCurrentState();
-                    break;
-                case RETURN_COINS:
-                    vendingState = service.returnCoins(vendingState);
-                    vendingState.printCurrentState();
-                    break;
-                case GET_RETURNED_COINS:
-                    vendingState = service.getReturnedCoins(vendingState);
-                    vendingState.printCurrentState();
-                default:
-                    System.out.println(selectedCommand.getCommandName());
-                    break;
+                    case GET_ITEMS:
+                        vendingState = service.getItem(vendingState);
+                        vendingState.printCurrentState();
+                        break;
+                    case RETURN_COINS:
+                        vendingState = service.returnCoins(vendingState);
+                        vendingState.printCurrentState();
+                        break;
+                    case GET_RETURNED_COINS:
+                        vendingState = service.getReturnedCoins(vendingState);
+                        vendingState.printCurrentState();
+                    default:
+                        System.out.println(selectedCommand.getCommandName());
+                        break;
+                }
             }
+        } catch (BusinessException ex) {
+            System.out.println(ex.getMessage());
         }
+
     }
 
     private static String validateFirstArgs(String[] args) {
