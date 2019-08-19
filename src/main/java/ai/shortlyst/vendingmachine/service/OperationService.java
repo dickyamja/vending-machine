@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ai.shortlyst.vendingmachine.service;
 
 import ai.shortlyst.vendingmachine.model.Coins;
@@ -78,7 +73,10 @@ public class OperationService {
         return vendingState;
     }
 
-    public VendingState returnCoins(VendingState vendingState) {
+    public VendingState returnCoins(VendingState vendingState) throws BusinessException {
+        if (vendingState.getPurchasedItem() == null) {
+            throw new BusinessException("Please first select item to purchase ");
+        }
         int totalCoin100 = vendingState.getChange() / 100;
         int totalCoin10 = (vendingState.getChange() % 100) / 10;
 
@@ -88,7 +86,11 @@ public class OperationService {
     }
 
     public VendingState getReturnedCoins(VendingState vendingState) {
-
+        
+        if (vendingState.getPurchasedItem() == null) {
+            throw new BusinessException("Please first select item to purchase ");
+        }
+        
         //Update Coins 100 inventory
         Coins coins100 = vendingState.getChangeCoins100();
         coins100.setQuantity(coins100.getQuantity() - vendingState.getTotalCoins100ForChange());

@@ -38,15 +38,16 @@ public class Main {
             readConsoleAndReadCommand(consoleReader, service, vendingState);
         }
     }
-    
-    private static void readConsoleAndReadCommand(BufferedReader consoleReader, 
-            OperationService service, VendingState vendingState) throws IOException{
-       
+
+    private static void readConsoleAndReadCommand(BufferedReader consoleReader,
+            OperationService service, VendingState vendingState) throws IOException {
+        System.out.print("Input your command : ");
         String inputLine = consoleReader.readLine();
         while (!"0".equals(inputLine)) {
-                routeCommand(inputLine, service, vendingState);
-                inputLine = consoleReader.readLine();
-            }
+            routeCommand(inputLine, service, vendingState);
+            System.out.print("Input your command : ");
+            inputLine = consoleReader.readLine();
+        }
     }
 
     private static void routeCommand(String inputLine, OperationService service,

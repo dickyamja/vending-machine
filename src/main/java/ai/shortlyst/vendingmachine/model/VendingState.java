@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ai.shortlyst.vendingmachine.model;
 
 import ai.shortlyst.vendingmachine.enums.CoinsTypeEnum;
@@ -116,7 +111,7 @@ public class VendingState {
     }
     
     public void printCurrentState(){
-        System.out.println("\n----------------------------------------------------");
+        System.out.println("\n------------------------------------------------------");
         
         System.out.printf("%-25s %-5d JPY %n", "[Input amount]",
                 (inputAmount == null ? 0 : inputAmount.getValue()));
@@ -192,7 +187,7 @@ public class VendingState {
         System.out.printf("%-25s %s %n","[Outlet]",
                 (purchasedItem == null ? "Empty" : purchasedItem.getName()));
         
-        System.out.println("----------------------------------------------------\n");
+        System.out.println("------------------------------------------------------\n");
         
     }
     

@@ -1,2 +1,5 @@
+ai/shortlyst/vendingmachine/service/OperationServiceGetReturnedCoinsTest.class
+ai/shortlyst/vendingmachine/service/OperationServiceGetItemTest.class
+ai/shortlyst/vendingmachine/service/OperationServiceReturnCoinsTest.class
 ai/shortlyst/vendingmachine/service/OperationServiceInsertCoinsTest.class
 ai/shortlyst/vendingmachine/service/OperationServiceChooseItemTest.class
