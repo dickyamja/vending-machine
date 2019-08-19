@@ -1,9 +1,0 @@
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/model/VendingState.java
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/Main.java
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/enums/CommandEnum.java
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/model/Coins.java
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/service/OperationService.java
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/enums/ItemsNameEnum.java
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/enums/CoinsTypeEnum.java
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/model/Items.java
-/Users/ahmadmudzakir/NetBeansProjects/VendingMachine/src/main/java/ai/shortlyst/vendingmachine/exception/BusinessException.java

@@ -1,18 +1,12 @@
 package ai.shortlyst.vendingmachine;
 
-import ai.shortlyst.vendingmachine.enums.CoinsTypeEnum;
 import ai.shortlyst.vendingmachine.enums.CommandEnum;
-import ai.shortlyst.vendingmachine.enums.ItemsNameEnum;
 import ai.shortlyst.vendingmachine.exception.BusinessException;
-import ai.shortlyst.vendingmachine.model.Coins;
-import ai.shortlyst.vendingmachine.model.Items;
 import ai.shortlyst.vendingmachine.model.VendingState;
 import ai.shortlyst.vendingmachine.service.OperationService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -151,19 +145,4 @@ public class Main {
         return CommandEnum.UNRECOGNIZED_COMMAND;
     }
 
-    private static VendingState initializeVendingState() {
-        VendingState vendingState = new VendingState();
-
-        //Initialize List Item For Sale, each item's quantity is set to 100 pieces
-        List<Items> listItemForSale = new ArrayList<>();
-        listItemForSale.add(new Items(1, ItemsNameEnum.CANNED_COFFEE.name(), 120, 100, ""));
-        listItemForSale.add(new Items(2, ItemsNameEnum.WATER_PET_BOTTLE.name(), 100, 100, ""));
-        listItemForSale.add(new Items(3, ItemsNameEnum.SPORT_DRINKS.name(), 150, 100, ""));
-        vendingState.setListItemForSale(listItemForSale);
-
-        //Initialize Coins (100 & 10) for change, each type's quantity set to 100 coins
-        vendingState.setChangeCoins100(new Coins(CoinsTypeEnum.COINS_100, 100));
-        vendingState.setChangeCoins10(new Coins(CoinsTypeEnum.COINS_10, 100));
-        return vendingState;
-    }
 }
